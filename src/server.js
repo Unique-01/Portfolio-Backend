@@ -17,12 +17,12 @@ const corsOptions = {
             callback(new Error("Not allowed by CORS"));
         }
     },
-    optionsSuccessStatus: 200, 
+    optionsSuccessStatus: 200,
 };
-
 
 const projectRouter = require("./routes/Project");
 const contactRouter = require("./routes/Contact");
+const adminRouter = require("./routes/AdminAccess");
 
 const port = process.env.PORT;
 
@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/api", projectRouter);
 app.use("/api", contactRouter);
+app.use("/api", adminRouter);
 
 app.listen(port, () => {
     console.log(`Server is now running on port ${port}`);
