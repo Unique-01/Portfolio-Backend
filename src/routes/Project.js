@@ -40,7 +40,7 @@ router.patch(
     fileUpload.single("image"),
     async (req, res) => {
         const { name, description, link } = req.body;
-        const image = req.file ? `/uploads/${req.file.filename}` : "";
+        const image = req.file && `/uploads/${req.file.filename}` ;
         const { projectId } = req.params;
         try {
             const project = await Project.findByIdAndUpdate(
